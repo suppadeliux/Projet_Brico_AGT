@@ -32,7 +32,7 @@ class Utilisateur {
     private $email;
     
     /**
-     * @ORM\Column(type="string",length=100)
+     * @ORM\Column(type="string",length=100,nullable=true)
      */
     private $siteWeb;
     

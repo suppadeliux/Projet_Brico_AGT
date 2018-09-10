@@ -4,7 +4,7 @@ namespace FrontBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="FrontBundle\Repository\AnnonceRepository")
  * @ORM\Table(name="annonce")
  */
 class Annonce {
@@ -20,6 +20,11 @@ class Annonce {
     * @ORM\Column(type="string",length=100)
     */
     private $titre;
+    
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $datePublication;
     
     /**
     * @ORM\Column(type="string",length=20)
@@ -151,4 +156,14 @@ class Annonce {
         return $this;
     }   
     
+    public function getDatePublication() {
+        return $this->datePublication;
+    }
+
+    public function setDatePublication($datePublication) {
+        $this->datePublication = $datePublication;
+        return $this;
+    }
+
+
 }
