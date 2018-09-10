@@ -50,7 +50,12 @@ class Annonce {
     * @ORM\Column(type="string",length=300)
     */
     private $email;
-        
+   
+    // Owner
+    /**
+     * @ORM\ManyToOne(targetEntity="FrontBundle\Entity\Utilisateur",inversedBy="annonces")
+     * @ORM\JoinColumn(name="id",referencedColumnName="id",onDelete="CASCADE")
+     */
     private $utilisateur;
     private $categorie;
     
