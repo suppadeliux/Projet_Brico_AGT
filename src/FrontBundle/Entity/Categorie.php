@@ -18,8 +18,7 @@ class Categorie {
      * @ORM\Column(type="string",length=50)
      */
     private $libelle;
-     /**
-     * @ORM\OneToMany(targetEntity="FrontBundle\Entity\Annonce",mappedBy="categorie")
-     */  
+    
+    
     private $annonces;
 }

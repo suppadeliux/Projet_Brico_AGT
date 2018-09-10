@@ -12,4 +12,29 @@ class Utilisateur {
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+    
+    /**
+    * @ORM\Column(type="string",length=150)
+    */ 
+    private $nom;
+    
+    /**
+    * @ORM\Column(type="string",length=150)
+    */
+    private $mdp;
+    
+    /**
+    * @ORM\Column(type="string",length=150)
+    */
+    private $email;
+    
+    /**
+    * @ORM\Column(type="string",length=150)
+    */
+    private $siteWeb;
+    
+    
+    private $annonces;
+    
+    
 }

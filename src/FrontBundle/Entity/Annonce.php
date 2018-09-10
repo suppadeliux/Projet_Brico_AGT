@@ -22,12 +22,12 @@ class Annonce {
     private $type;
     
     /**
-    * @ORM\Column(type="string",length=255)
+    * @ORM\Column(type="text")
     */
     private $description;
     
     /**
-    * @ORM\Column(type="string",length=255)
+    * @ORM\Column(type="string",length=300)
     */
     private $resume;
     
@@ -35,9 +35,27 @@ class Annonce {
     * @ORM\Column(type="blob",length=255)
     */
     private $photo;
+    
+    /**
+    * @ORM\Column(type="string",length=300)
+    */
     private $marque;
+    
+    /**
+    * @ORM\Column(type="string",length=300)
+    */
     private $ville;
+    
+    /**
+    * @ORM\Column(type="string",length=300)
+    */
     private $email;
+   
+    // Owner
+    /**
+     * @ORM\ManyToOne(targetEntity="FrontBundle\Entity\Utilisateur",inversedBy="annonces")
+     * @ORM\JoinColumn(name="id",referencedColumnName="id",onDelete="CASCADE")
+     */
     private $utilisateur;
     private $categorie;
     
