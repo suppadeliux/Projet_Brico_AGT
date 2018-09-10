@@ -1,11 +1,17 @@
-Hello World! Coucou AGT
+{% extends 'base.html.twig' %}
+{% block title %}
+    {{ parent() }} - Accueil
+{% endblock %}
 
-lkdjlqkjsdqsdqdqsd
-qsdqsdqlsdkjqlsdkjsqlkjdqsdq
-jkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
-
-
-
-
-
-Adelaaaaaaaaaaaaaaaaaaaaa moi qui faut tu as
+{% block body %}
+    <h2>Dernières annonces :</h2>
+        {% for post in posts %}
+        <div class="post">
+            <h3><a href="{{ path('index', {'id' : post.id}) }}">{{ post.titre|upper }}</a></h3>
+            <p>Marque : {{post.marque}}</p>
+            <p class="content">{{ post.resume }}</p>
+            <p class="details">Le <span>{{ post.datePublication|date('d/m/Y') ~ ' à ' ~ post.ville|upper }}</span> </p>
+            <hr/>
+        </div>
+    {% endfor %}
+{% endblock %}
