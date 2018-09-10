@@ -10,3 +10,4 @@ categorie:
 deposerAnnonce:
     path:     /deposerAnnonce
     defaults: { _controller: FrontBundle:Default:deposerAnnonce }
+
