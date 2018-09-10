@@ -17,7 +17,6 @@ class Utilisateur {
     private $id;
     
     /**
-<<<<<<< HEAD
      * @ORM\Column(type="string" length=100)
      */
     private $nom;

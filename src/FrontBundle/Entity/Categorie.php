@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?php
 namespace FrontBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
