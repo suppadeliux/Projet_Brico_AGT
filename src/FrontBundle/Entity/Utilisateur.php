@@ -40,4 +40,59 @@ class Utilisateur {
      * @ORM\OneToMany(targetEntity="Annonce", mappedBy="utilisateur")
      */
     private $annonces;
+    
+    public function getId() {
+        return $this->id;
+    }
+
+    public function getNom() {
+        return $this->nom;
+    }
+
+    public function getMdp() {
+        return $this->mdp;
+    }
+
+    public function getEmail() {
+        return $this->email;
+    }
+
+    public function getSiteWeb() {
+        return $this->siteWeb;
+    }
+
+    public function getAnnonces() {
+        return $this->annonces;
+    }
+
+    public function setId($id) {
+        $this->id = $id;
+        return $this;
+    }
+
+    public function setNom($nom) {
+        $this->nom = $nom;
+        return $this;
+    }
+
+    public function setMdp($mdp) {
+        $this->mdp = $mdp;
+        return $this;
+    }
+
+    public function setEmail($email) {
+        $this->email = $email;
+        return $this;
+    }
+
+    public function setSiteWeb($siteWeb) {
+        $this->siteWeb = $siteWeb;
+        return $this;
+    }
+
+    public function setAnnonces($annonces) {
+        $this->annonces = $annonces;
+        return $this;
+    }
+
 }
