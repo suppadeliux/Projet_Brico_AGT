@@ -17,6 +17,7 @@ class Utilisateur {
     private $id;
     
     /**
+<<<<<<< HEAD
      * @ORM\Column(type="string" length=100)
      */
     private $nom;
@@ -94,5 +95,4 @@ class Utilisateur {
         $this->annonces = $annonces;
         return $this;
     }
-
-}
+}    
