@@ -1,3 +1,12 @@
-front_homepage:
+index:
     path:     /
     defaults: { _controller: FrontBundle:Default:index }
+login:
+    path:     /login
+    defaults: { _controller: FrontBundle:Default:login }
+categorie:
+    path:     /
+    defaults: { _controller: FrontBundle:Default:categorie }
+deposerAnnonce:
+    path:     /deposerAnnonce
+    defaults: { _controller: FrontBundle:Default:deposerAnnonce }
