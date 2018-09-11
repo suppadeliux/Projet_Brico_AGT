@@ -26,8 +26,9 @@ class AnnonceController extends Controller
         $em = $this->getDoctrine()->getManager();
         $repository = $em->getRepository('FrontBundle:Annonce');
         $posts= $repository->getById($id);
-
-        $args = array('post' => $posts);
+        $rep2 = $em->getRepository('FrontBundle:Categorie');
+        $cats = $rep2->getCategories();
+        $args = array('post' => $posts,'cats' => $cats);
         return $this->render('FrontBundle:Annonce:annonce.html.twig', $args);
 	
     }
