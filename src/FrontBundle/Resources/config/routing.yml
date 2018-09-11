@@ -6,13 +6,14 @@ login:
     path:     /login
     defaults: { _controller: FrontBundle:Default:login }
 
-categorie:
-    path:     /categorie/{id}
-    defaults: { _controller: FrontBundle:Default:categorie }
-
 deposerAnnonce:
     path:     /deposerAnnonce
     defaults: { _controller: FrontBundle:Default:deposerAnnonce }
+
+categorie:
+    path:     /categorie/{id}/{page}
+    defaults: { _controller: FrontBundle:Annonce:categorie, page: 1 }
+    
 view:
     path:     /annonce/{id}
     defaults: { _controller: FrontBundle:Annonce:view }
