@@ -11,16 +11,19 @@ class DefaultController extends Controller
         $em = $this->getDoctrine()->getManager();
         $rep = $em->getRepository('FrontBundle:Annonce');
         $posts = $rep->getLastPosts(10);
-
-        $args = array('posts' => $posts);
+                
+        $rep2 = $em->getRepository('FrontBundle:Categorie');
+        $cats = $rep2->getCategories();
+        
+        $args = array('posts' => $posts, 'cats' => $cats);
         return $this->render('FrontBundle:Default:index.html.twig', $args);
     }
     public function categorieAction()
     {
-        $em = $this->getDoctrine()->getManager();
-        $rep = $em->getRepository('FrontBundle:Categorie');
-        $cats = $rep->getCategories();
-        $args = array('cats' => $cats);
-        return $this->render('FrontBundle:Default:base.html.twig', $args);
+//        $em = $this->getDoctrine()->getManager();
+//        $rep = $em->getRepository('FrontBundle:Categorie');
+//        $cats = $rep->getCategories();
+//        $args = array('cats' => $cats);
+//        return $this->render('FrontBundle:Default:base.html.twig', $args);
     }
 }
