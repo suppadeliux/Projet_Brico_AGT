@@ -5,7 +5,7 @@ namespace FrontBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity (repositoryClass="FrontBundle\Repository\AnnonceRepository")
+ * @ORM\Entity (repositoryClass="FrontBundle\Repository\CategorieRepository")
  * @ORM\Table(name="categorie")
  */
 class Categorie {

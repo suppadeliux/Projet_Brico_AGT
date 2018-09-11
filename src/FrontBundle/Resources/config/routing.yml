@@ -8,7 +8,7 @@ login:
 
 deposerAnnonce:
     path:     /deposerAnnonce
-    defaults: { _controller: FrontBundle:Default:deposerAnnonce }
+    defaults: { _controller: FrontBundle:Depot:deposerAnnonce }
 
 categorie:
     path:     /categorie/{id}/{page}

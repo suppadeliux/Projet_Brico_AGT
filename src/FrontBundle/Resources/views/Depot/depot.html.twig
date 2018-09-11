@@ -1,0 +1,106 @@
+{% extends 'FrontBundle::base.html.twig' %}
+
+
+{% block title %}
+    {{ parent() }} - Accueil
+{#    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">#}
+    
+{#    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>#}
+{#    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>#}
+{#    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>#}
+    
+
+{% endblock %}
+
+{% block body %}
+    
+    <div class="container">
+	<div class="input-group row">
+	    <h1>Deposer une annonce :</h1>
+	</div><br>
+    <form>
+	<div class="input-group row">
+	    <span class="input-group-addon" id="basic-addon1">Titre de l'annonce : </span>
+	    <input type="text" class="form-control" placeholder="Marteau à vendre..." aria-describedby="basic-addon1">
+	</div><br>
+	
+	<div class="form-group row">
+	    <label for="example-date-input" class="col-2 col-form-label">Date</label>
+	    <div class="col-10">
+	      <input class="form-control" type="date" value="2011-08-19" id="example-date-input">
+	    </div>
+	</div>
+	
+	<div class="form-group row">
+	    <label for="example-text-input" class="col-2 col-form-label">Type d'annonce</label>
+	</div>
+	<div class="form-group row">
+	    <label class="radio-inline" for="exampleRadios1">
+		<input class="form-check-input" type="radio" name="montyperadio" id="exampleRadios1" value="Prêt" checked="checked">Prêt
+	    </label>	
+	    <label class="radio-inline" for="exampleRadios2">
+		<input class="form-check-input" type="radio" name="montyperadio" id="exampleRadios2" value="Location">Location
+	    </label>
+	    <label class="radio-inline" for="exampleRadios3">
+		<input class="form-check-input" type="radio" name="montyperadio" id="exampleRadios3" value="Vente">Vente
+	    </label>
+	</div>
+
+	<div class="form-group row">
+	  <label for="descriptif">Descriptif de l'annonce: </label>
+	  <textarea type="textarea" class="form-control" rows="5" id="descriptif"></textarea>
+	</div><br>
+	
+	
+	<div class="input-group row">
+	  <span class="input-group-addon" id="basic-addon2"> Resumé de l'annonce</span>
+	  <input type="text" class="form-control" placeholder="Ex: Perceuse a vendre à 30 € à Nantes" aria-describedby="basic-addon1"><br>
+	</div><br>
+	
+	<div class="input-group row">
+	    <span class="input-group-addon">@</span>
+	    <input type="text" class="form-control" placeholder="monmail@sfr.fr">
+	</div><br>
+	
+	<div class="input-group row">
+	  <span class="input-group-addon" id="basic-addon2">Marque</span>
+	  <input type="text" class="form-control" placeholder="Akita...etc" aria-describedby="basic-addon2"><br>
+	</div><br>
+	<div class="input-group row">
+	  <span class="input-group-addon" id="basic-addon2">Ville</span>
+	  <input type="text" class="form-control" placeholder="Votre ville..." aria-describedby="basic-addon2"><br>
+	</div><br>
+	<div class="input-group row">
+	  <span class="input-group-addon" id="basic-addon2">Categorie</span>
+	  <input type="text" class="form-control" placeholder="Outillage à main" aria-describedby="basic-addon2"><br>
+	</div><br>
+	
+	<div class="input-group row">
+	  <span class="input-group-addon" id="basic-addon3">Votre site web : </span>
+	  <input type="text" class="form-control" id="basic-url" placeholder="www.mon-site.fr" aria-describedby="basic-addon3">
+	</div><br>
+	
+	<div class="form-group row">
+	  <label for="photo">Choisir une photo</label>
+	  <input type="file" class="form-control-file" id="photo" accept="image/*">
+	  <label for="photo">*Uniquement des photos(jpeg, png,etc)</label>
+	</div>
+	<hr>
+	<div class="form-group row">
+	  <span id="basic-addon2">Souhaitez-vous que votre annonce soit repris par un de nos partenaire publics?</span>
+	  
+	  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="true" checked>
+	  <span class="form-check-label" for="exampleRadios1">Oui</span>
+	  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="false">
+	  <span class="form-check-label" for="exampleRadios1">Non</span>
+	</div><br>
+	
+	<div class="form-group row">
+	    <button type="submit" class="btn btn-default">Enregistrer</button>
+	</div>
+	<hr>
+    </form>
+    </div>
+{% endblock %}
+
+{% block footer %}{{ parent() }}{% endblock %}
