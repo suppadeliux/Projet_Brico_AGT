@@ -1,41 +1,48 @@
 <html>
-    
+
     <head>
         <title>{% block title %}Brico Échange{% endblock %}</title>
-        <link href="{{ asset('bundles/front/css/general.css') }}" rel="stylesheet" type="text/css" />
-{#        <link href="{{ asset('bundles/front/css/knacss.css') }}" rel="stylesheet" type="text/css" />#}
-{#        <link href="{{ asset('bundles/front/css/styles.css') }}" rel="stylesheet" type="text/css" />#}
+        {#        <link href="{{ asset('bundles/front/css/general.css') }}" rel="stylesheet" type="text/css" />#}
+        <link href="{{ asset('bundles/front/css/knacss.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('bundles/front/css/styles.css') }}" rel="stylesheet" type="text/css" />
     </head>
     <body>
         <div class="header">
             {% block header %}
-            <p class="logo"><a href="{{ path('index') }}"><img src="{{ asset('bundles/front/img/logo.png') }}" alt="logo" title="Accueil" /></a></p>
-            <h1>BRICO ÉCHANGE</h1>
-             <div class="clear"></div>
-               <a href="{{ path('login') }}">Inscription / Connexion</a> 
-             <div class="clear"></div>
-            <hr />
-        </div>
-            {% endblock %}
+                <p class="logo"><a href="{{ path('index') }}"><img src="{{ asset('bundles/front/img/logo.png') }}" alt="logo" title="Accueil" /></a></p>
+                <h1>BRICO ÉCHANGE</h1>
+                <div class="clear"></div>
+                <a href="{{ path('login') }}">Inscription / Connexion</a> 
+                <div class="clear"></div>
+                <hr />
+            </div>
+        {% endblock %}
         <div class="flex-container">
             {% block sidebar %}
-            <aside class="mod w20 pas aside">
-                <nav id="navigation" role="navigation">
-                    <ul class="pam">
-                        <li><a href="{{ path('index') }}">Accueil</a></li>
-                        <li><a href="{{ path('categorie') }}">Catégories</a></li>
-                        <li><a href="{{ path('deposerAnnonce') }}">Déposer annonce</a></li>
-                    </ul>
-                </nav>
-            </aside>
+                <aside class="mod w20 pas aside">
+                    <nav id="navigation" role="navigation">
+                        <ul class="pam">
+                            <li><a href="{{ path('index') }}">Accueil</a></li>
+                            <li>Catégories</li>
+                            <ul class="pam">
+                                {% for value in cats %}
+                                    <div class="post">
+                                        <li class="categories"><a href="{{path('categorie',{'id':value.id})}}">{{value.libelle |capitalize}}</a></li>
+                                    </div>
+                                {% endfor %}
+                            </ul>
+                            <li><a href="{{ path('deposerAnnonce') }}">Déposer annonce</a></li>
+                        </ul>
+                    </nav>
+                </aside>
             {% endblock %}
-        
+
             <main id="main" role="main" class="flex-item-fluid pas">
-                {% block body %}{% endblock %}
-            </main>
-        </div>
-        <div class="footer">
-            {% block footer %}© 2018 Brico-Échange - Tous droits réservés{% endblock %}
-        </div>
-    </body>
+            {% block body %}{% endblock %}
+        </main>
+    </div>
+    <div class="footer">
+        {% block footer %}© 2018 Brico-Échange - Tous droits réservés{% endblock %}
+    </div>
+</body>
 </html>
