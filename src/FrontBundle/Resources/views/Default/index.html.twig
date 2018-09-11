@@ -1,4 +1,6 @@
 {% extends 'FrontBundle::base.html.twig' %}
+
+
 {% block title %}
     {{ parent() }} - Accueil
 {% endblock %}
@@ -16,20 +18,5 @@
         {% endfor %}
 {% endblock %}
 {% block sidebar %}
-    <aside class="mod w20 pas aside">
-        <nav id="navigation" role="navigation">
-            <ul class="pam">
-                <li><a href="{{ path('index') }}">Accueil</a></li>
-                <li>Catégories</li>
-                    <ul class="pam">
-                    {% for cat in cats %}
-                        <div class="post">
-                            <li class="categories"><a href="{{path('categorie',{'id':cat.id})}}">{{cat.libelle |capitalize}}</a></li>
-                        </div>
-                    {% endfor %}
-                    </ul>
-                <li><a href="{{ path('deposerAnnonce') }}">Déposer annonce</a></li>
-            </ul>
-        </nav>
-    </aside>
+    {% include ('FrontBundle:Default:sidebar.html.twig')  %}
 {% endblock %}

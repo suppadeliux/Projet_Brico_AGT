@@ -10,14 +10,14 @@ class DefaultController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $rep = $em->getRepository('FrontBundle:Annonce');
-        $posts = $rep->getLastPosts(10);
-                
+        $posts = $rep->getLastPosts(10);       
         $rep2 = $em->getRepository('FrontBundle:Categorie');
         $cats = $rep2->getCategories();
-        
-        $args = array('posts' => $posts, 'cats' => $cats);
+        $args = array('posts' => $posts,'cats' => $cats);
         return $this->render('FrontBundle:Default:index.html.twig', $args);
+//        return $this->render('FrontBundle:Default:base.html.twig', $args);
     }
+    
     public function categorieAction()
     {
 //        $em = $this->getDoctrine()->getManager();
