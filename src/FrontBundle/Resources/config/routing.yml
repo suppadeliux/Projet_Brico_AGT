@@ -18,3 +18,8 @@ view:
     path:     /annonce/{id}
     defaults: { _controller: FrontBundle:Annonce:view }
 
+search:
+    path:     /search
+    defaults: { _controller: FrontBundle:Recherche:search }
+
+

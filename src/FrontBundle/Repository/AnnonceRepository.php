@@ -46,4 +46,11 @@ class AnnonceRepository extends EntityRepository
         $query -> setParameter('idCat', $idCat);
         return $query->getOneOrNullResult();
     }
+    
+    public function getSearchAnnonce($motcle) {
+        $req = "SELECT a, c FROM FrontBundle:Annonce a JOIN a.categorie c WHERE a.ville LIKE '%$motcle%' OR a.description LIKE '%$motcle%' OR a.resume LIKE '%$motcle%' OR c.libelle LIKE '%$motcle%' ORDER BY a.id DESC, c.id DESC";
+
+        $query = $this->getEntityManager()->createQuery($req);
+        return $query->getResult();
+    }
 }
