@@ -1,0 +1,40 @@
+{% extends 'FrontBundle::base.html.twig' %}
+
+{% block title %}
+    {{ parent() }} - {#{{ cat.libelle }}#}
+{% endblock %}
+
+{% block body %}
+    {#<h2>{{ cat.libelle|upper }}</h2>#}
+    <div class="post">
+        {% for value in posts %}
+            <div class="post">
+            <h3><a href="{{ path('view', {'id' : value.id}) }}">{{ value.titre|upper }}</a></h3>
+            <p>Marque : {{ value.marque|upper }}</p>
+            <p class="content">{{ value.resume|capitalize }}</p>
+            <p class="details">Le <span>{{ value.datePublication|date('d/m/Y') ~ ' à ' ~ value.ville|upper }}</span> </p>
+            <hr/>
+        </div>
+        {% endfor %}
+    </div>
+    <hr />
+    <div class="pagination">
+    <div class="pagination-buttons link_blog text-center">
+    {% if pagination.page>1 %}
+       <a href="{{ path(pagination.route, pagination.route_params|merge({'page': 1, 'id' : cat.id})) }}"><<</a>
+       <a href="{{ path(pagination.route, pagination.route_params|merge({'page': pagination.page-1, 'id' : cat.id})) }}"></a>
+    {% endif %}
+
+    {% if posts_count!=0 %}
+       {% for p in range(max(pagination.page-2, 1), min(pagination.page+2, pagination.pages_count)) %}
+          <a{% if p == pagination.page %} class="current-page"{% endif %} href="{{ path(pagination.route, pagination.route_params|merge({'id' : cat.id, 'page': p})) }}">{{ p }}</a>
+       {% endfor %}
+    {% endif %}
+
+    {% if pagination.page<pagination.pages_count %}
+       <a href="{{ path(pagination.route, pagination.route_params|merge({'page': pagination.page+1,'id' : cat.id})) }}">></a>
+       <a href="{{ path(pagination.route, pagination.route_params|merge({'page': pagination.pages_count,'id' : cat.id})) }}">>></a>
+    {% endif %}
+    </div>
+</div>
+{% endblock %}

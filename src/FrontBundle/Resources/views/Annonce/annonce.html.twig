@@ -1,17 +1,17 @@
 {% extends 'FrontBundle::base.html.twig' %}
 
 {% block title %}
-    {{ parent() }} - {{ post.getTitre() }}
+    {{ parent() }} - {{ posts.getTitre() }}
 {% endblock %}
 
 {% block body %}
     <div class="post">
-        <h3>{{ post.titre|upper }}</h3>
-	<p class="content">{{ post.description }}</p>
-	<p>Marque : {{post.marque}}</p>
+        <h3>{{ posts.titre|upper }}</h3>
+	<p class="content">{{ posts.description }}</p>
+	<p>Marque : {{posts.marque}}</p>
 	
 	<p class="details">
-	    Le <span>{{ post.datePublication|date('d/m/Y') ~ ' à ' ~ post.ville|upper }}</span>
+	    Le <span>{{ posts.datePublication|date('d/m/Y') ~ ' à ' ~ posts.ville|upper }}</span>
 	</p>
     </div>
     <hr />

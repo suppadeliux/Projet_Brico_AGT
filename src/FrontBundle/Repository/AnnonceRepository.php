@@ -37,7 +37,6 @@ class AnnonceRepository extends EntityRepository
         $query -> setParameter('idCat', $idCat);
         $query -> setFirstResult(($page-1) * $nbPosts);
         $query -> setMaxResults($nbPosts);
-//        return $query->getResult();
         return new Paginator($query);
     }
     
@@ -46,6 +45,5 @@ class AnnonceRepository extends EntityRepository
         $query = $this -> getEntityManager() -> createQuery($request);
         $query -> setParameter('idCat', $idCat);
         return $query->getOneOrNullResult();
-        //return $count = $query->getQuery()->getSingleScalarResult();
     }
 }
