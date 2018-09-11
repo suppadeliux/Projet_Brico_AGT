@@ -2,6 +2,8 @@
 namespace FrontBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Response;
+
 
 class AnnonceController extends Controller
 {
@@ -15,5 +17,18 @@ class AnnonceController extends Controller
         $repository=$em->getRepository("FrontBundle:Annonce");
         $posts= $repository->getById($id); 
         return array('post'=>$posts);
+    }
+    public function viewAction($id){
+	if (!(int)$id)
+            throw $this->createNotFoundException('Aucun article trouvé');
+
+        // Get current post to display
+        $em = $this->getDoctrine()->getManager();
+        $repository = $em->getRepository('FrontBundle:Annonce');
+        $posts= $repository->getById($id);
+
+        $args = array('post' => $posts);
+        return $this->render('FrontBundle:Annonce:annonce.html.twig', $args);
+	
     }
 }
