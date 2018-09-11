@@ -46,7 +46,9 @@ div.clear{
     clear:both;
     height: 0; overflow: hidden; /* Précaution pour IE 7 */
 }
-
+ul.pam{
+    list-style-type: none;
+}
 ul.menu{
     /* Valeur avec un mot-clé */
     list-style-type: none;

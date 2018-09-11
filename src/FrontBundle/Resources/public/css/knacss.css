@@ -109,6 +109,7 @@ ol ol,
 ul ul,
 ol ul,
 ul ol {
+    list-style-type: none;
   margin-bottom: 0;
 }
 
@@ -500,6 +501,7 @@ ul,
 dl,
 blockquote,
 pre {
+    list-style-type: none;
   margin-top: 0;
   margin-bottom: 1rem;
 }
@@ -511,6 +513,7 @@ li ul,
 li ol,
 ol ol,
 ul ul {
+    list-style-type: none;
   margin-top: 0;
   margin-bottom: 0;
 }
@@ -536,6 +539,7 @@ img {
 /* Styling elements */
 ul,
 ol {
+    list-style-type: none;
   padding-left: 2em;
 }
 
@@ -720,6 +724,7 @@ kbd {
   blockquote,
   ul,
   ol {
+      list-style-type: none;
     page-break-inside: avoid;
   }
   /* page break before main headers
@@ -1227,7 +1232,8 @@ ul.is-unstyled, ul.unstyled {
 }
 
 .pam {
-  padding: 2rem;
+    list-style-type: none;
+    padding: 2rem;
 }
 
 .pal {
