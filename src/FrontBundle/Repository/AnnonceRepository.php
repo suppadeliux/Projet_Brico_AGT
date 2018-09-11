@@ -14,6 +14,13 @@ class AnnonceRepository extends EntityRepository
         $query->setMaxResults($nbPosts);
         return $query->getResult();
     }
+    public function getCategories()
+    {
+        $request = 'SELECT c FROM FrontBundle:Categorie c
+            ORDER BY c.libelle';
+        $query = $this->getEntityManager()->createQuery($request);
+        return $query->getResult();
+    }
     
     public function getById($idAnnonce){
         $em=$this->getEntityManager();
