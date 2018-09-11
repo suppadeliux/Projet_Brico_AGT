@@ -43,12 +43,16 @@ class AnnonceController extends Controller
                 'pages_count' => $pages_count,
                 'route_params' => array()
             );
+        
+        $rep2 = $em->getRepository('FrontBundle:Categorie');
+        $cats = $rep2->getCategories();
                
         return $this->render('FrontBundle:Annonce:categorie.html.twig', array(
                 'cat' => $cat,
                 'posts_count'=>$posts_count,
                 'posts' => $posts,
                 'pagination'=> $pagination,
+                'cats' => $cats
                 ));
     }
      
