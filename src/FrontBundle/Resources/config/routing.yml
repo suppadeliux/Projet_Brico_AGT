@@ -12,7 +12,7 @@ categorie:
 
 deposerAnnonce:
     path:     /deposerAnnonce
-    defaults: { _controller: FrontBundle:Default:deposerAnnonce }
+    defaults: { _controller: FrontBundle:Depot:deposerAnnonce }
 view:
     path:     /annonce/{id}
     defaults: { _controller: FrontBundle:Annonce:view }
