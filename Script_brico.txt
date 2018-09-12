@@ -1,0 +1,138 @@
+﻿INSERT INTO utilisateur(nom,mdp,email,site_web) VALUES ('Pepito P', 'pepitomdp', 'pepito@eni.fr', 'NULL');
+INSERT INTO utilisateur(nom,mdp,email,site_web) VALUES ('Maria M', 'mariaa', 'maria@eni.fr', 'NULL');
+INSERT INTO utilisateur(nom,mdp,email,site_web) VALUES ('Denis S', 'denisss', 'denis@eni.fr', 'NULL');
+INSERT INTO utilisateur(nom,mdp,email,site_web) VALUES ('Guillaume R', 'guigui', 'guigui@eni.fr', 'NULL');
+INSERT INTO utilisateur(nom,mdp,email,site_web) VALUES ('SOCIETE AS', 'SOCIETE AS', 'contact@as.fr', 'www.as.fr');
+INSERT INTO utilisateur(nom,mdp,email,site_web) VALUES ('Les outils de Nantes', 'Les outils de Nantes', 'outils_nantes@yahoo.fr', 'www.outilsdenantes.bhz');
+
+
+
+
+
+INSERT INTO categorie(libelle) VALUES ("Electroportatif");
+INSERT INTO categorie(libelle) VALUES ("Outillages à main");
+INSERT INTO categorie(libelle) VALUES ("Outillage spécialisé");
+INSERT INTO categorie(libelle) VALUES ("Outils de jardin");
+INSERT INTO categorie(libelle) VALUES ("Machines d'atelier");
+INSERT INTO categorie(libelle) VALUES ("Levage et travail en hauteur");
+INSERT INTO categorie(libelle) VALUES ("Materiel aménagement");
+INSERT INTO categorie(libelle) VALUES ("Equipement protection");
+
+
+
+INSERT INTO annonce(utilisateur_id,categorie_id,titre,date_publication,type,description,resume,marque,ville,email) 
+VALUES (1, 1,"Perceuse à vendre - pas cher","2018-09-04","Vente", "Bonjour, Suite a l'achat d'une d'une nouvelle, je vends celle ci à 45 €, prix non 
+négociable", "Vente d'une perceuse", "Makita", "Nantes", "pepito@eni.fr");
+
+INSERT INTO annonce(utilisateur_id,categorie_id,titre,date_publication,type,description,
+resume,marque,ville,email) VALUES (2, 2,"Coupe Boulons - Prêt - pas cher","2018-09-03",
+"Prêt", "Bonjour, je suis sympa, et puis je voudrais me faire un peu d'argent, je la mets donc en location a 50 € la journée, prix 
+non négociable", "Prêt d'un coupe boulon", "VOLVO", "Lorient", "maria@eni.fr");
+
+INSERT INTO annonce(utilisateur_id,categorie_id,titre,date_publication,type,description,
+resume,marque,ville,email) VALUES (3, 3,"Couteau d'electricien à louer - pas cher","2018-09-02",
+"Location", "Bonjour, Suite a l'achat d'une d'une nouvelle, je le loue à 80 €, prix a debattre", "location d'un Couteau d'electricien", "NISSAN", "Tours", "denis@eni.fr");
+
+INSERT INTO annonce(utilisateur_id,categorie_id,titre,date_publication,type,description,
+resume,marque,ville,email) VALUES (4, 4,"Tondeuse à vendre - pas cher","2018-08-01",
+"Vente", "Bonjour, Suite a l'achat d'une d'une nouvelle, je vens celle ci à 250 €, prix non débattre... PAS CHER c'est CADEAU!!!!", "Vente d'une tondeuse, pas chere", "TACOS", "Angers", "guigui@eni.fr");
+
+INSERT INTO annonce(utilisateur_id,categorie_id,titre,date_publication,type,description,
+resume,marque,ville,email) VALUES (5, 4,"Tondeuse à louer","2018-08-02",
+"location", "Bonjour, je loue une tondeuse à gazon 15€ la journée, c'est CADEAU!!!!", "location tondeuse à gazon", "TACOS", "Gorges", "guigui@eni.fr");
+
+INSERT INTO annonce(utilisateur_id,categorie_id,titre,date_publication,type,description,
+resume,marque,ville,email) VALUES (6, 4,"Sécateur à louer","2018-08-02",
+"location", "Bonjour, je loue une tondeuse à gazon 20€ la journée, c'est CADEAU!!!!", "location tondeuse à gazon", "TACOS", "Nantes", "outils_nantes@yahoo.fr");
+
+INSERT INTO annonce(utilisateur_id,categorie_id,titre,date_publication,type,description,
+resume,marque,ville,email) VALUES (6, 4,"Sécateur à louer","2018-08-02",
+"location", "Bonjour, je loue un sécateur 5€ la journée, c'est CADEAU!!!!", "Location sécateur", "TACOS", "Nantes", "outils_nantes@yahoo.fr");
+
+INSERT INTO annonce(utilisateur_id,categorie_id,titre,date_publication,type,description,
+resume,marque,ville,email) VALUES (6, 4,"Cisaille à louer","2018-08-02",
+"location", "Bonjour, je loue une cisaille 2€ la journée, c'est CADEAU!!!!", "Location cisaille", "TACOS", "Nantes", "outils_nantes@yahoo.fr");
+
+INSERT INTO annonce(utilisateur_id,categorie_id,titre,date_publication,type,description,
+resume,marque,ville,email) VALUES (6, 4,"Pelle à louer","2018-08-02",
+"location", "Bonjour, je loue une pelle 2€ la journée, c'est CADEAU!!!!", "Location pelle", "TACOS", "Nantes", "outils_nantes@yahoo.fr");
+
+INSERT INTO annonce(utilisateur_id,categorie_id,titre,date_publication,type,description,
+resume,marque,ville,email) VALUES (6, 4,"fourche à louer","2018-08-02",
+"location", "Bonjour, je loue une fourche 2€ la journée, c'est CADEAU!!!!", "Location fourche", "TACOS", "Nantes", "outils_nantes@yahoo.fr");
+
+INSERT INTO annonce(utilisateur_id,categorie_id,titre,date_publication,type,description,
+resume,marque,ville,email) VALUES (6, 4,"pioche à louer","2018-08-03",
+"location", "Bonjour, je loue une pioche 2€ la journée, c'est CADEAU!!!!", "Location pioche", "TACOS", "Nantes", "outils_nantes@yahoo.fr");
+
+INSERT INTO annonce(utilisateur_id,categorie_id,titre,date_publication,type,description,
+resume,marque,ville,email) VALUES (6, 4,"binette à louer","2018-08-03",
+"location", "Bonjour, je loue une binette 2€ la journée, c'est CADEAU!!!!", "Location binette", "TACOS", "Nantes", "outils_nantes@yahoo.fr");
+
+INSERT INTO annonce(utilisateur_id,categorie_id,titre,date_publication,type,description,
+resume,marque,ville,email) VALUES (6, 4,"sarcloir à louer","2018-08-04",
+"location", "Bonjour, je loue un sarcloir 2€ la journée, c'est CADEAU!!!!", "Location sarcloir", "TACOS", "Nantes", "outils_nantes@yahoo.fr");
+
+INSERT INTO annonce(utilisateur_id,categorie_id,titre,date_publication,type,description,
+resume,marque,ville,email) VALUES (6, 4,"griffe de jardin à louer","2018-08-05",
+"location", "Bonjour, je loue une griffe de jardin 2€ la journée, c'est CADEAU!!!!", "Location griffe de jardin", "TACOS", "Nantes", "outils_nantes@yahoo.fr");
+
+INSERT INTO annonce(utilisateur_id,categorie_id,titre,date_publication,type,description,
+resume,marque,ville,email) VALUES (6, 4,"désherbeur manuel à louer","2018-08-03",
+"location", "Bonjour, je loue un désherbeur manuel 2€ la journée, c'est CADEAU!!!!", "Location désherbeur manuel", "TACOS", "Nantes", "outils_nantes@yahoo.fr");
+
+INSERT INTO annonce(utilisateur_id,categorie_id,titre,date_publication,type,description,
+resume,marque,ville,email) VALUES (6, 4,"pioche à vendre","2018-08-15",
+"vente", "Bonjour, je vends une pioche 25€, c'est CADEAU!!!!", "vente pioche", "TACOS", "Nantes", "outils_nantes@yahoo.fr");
+
+INSERT INTO annonce(utilisateur_id,categorie_id,titre,date_publication,type,description,
+resume,marque,ville,email) VALUES (6, 4,"tondeuse à vendre","2018-08-15",
+"vente", "Bonjour, je vends une tondeuse 250€, c'est CADEAU!!!!", "vente pioche", "TACOS", "Nantes", "outils_nantes@yahoo.fr");
+
+INSERT INTO annonce(utilisateur_id,categorie_id,titre,date_publication,type,description,
+resume,marque,ville,email) VALUES (6, 4,"rateau à vendre","2018-08-15",
+"vente", "Bonjour, je vends un rateau 25€, c'est CADEAU!!!!", "vente rateau", "TACOS", "Nantes", "outils_nantes@yahoo.fr");
+
+INSERT INTO annonce(utilisateur_id,categorie_id,titre,date_publication,type,description,
+resume,marque,ville,email) VALUES (6, 4,"caisse à oignon à vendre","2018-08-03",
+"vente", "Bonjour, je vends une caisse à oignon 20€ la journée, c'est CADEAU!!!!", "Vente caisse à oignon", "TACOS", "Nantes", "outils_nantes@yahoo.fr");
+
+INSERT INTO annonce(utilisateur_id,categorie_id,titre,date_publication,type,description,
+resume,marque,ville,email) VALUES (6, 4,"peigne à myrtilles à louer","2018-08-14",
+"location", "Bonjour, je loue un peigne à myrtilles 2€ la journée, c'est CADEAU!!!!", "Location peigne à myrtilles ", "TACOS", "Nantes", "outils_nantes@yahoo.fr");
+
+INSERT INTO annonce(utilisateur_id,categorie_id,titre,date_publication,type,description,
+resume,marque,ville,email) VALUES (6, 4,"taille-haie à louer","2018-08-14",
+"location", "Bonjour, je loue un taille-haie 2€ la journée, c'est CADEAU!!!!", "Location taille-haie", "TACOS", "Nantes", "outils_nantes@yahoo.fr");
+
+INSERT INTO annonce(utilisateur_id,categorie_id,titre,date_publication,type,description,
+resume,marque,ville,email) VALUES (6, 4,"panier à vendange à louer","2018-08-10",
+"location", "Bonjour, je loue un panier à vendange 2€ la journée, c'est CADEAU!!!!", "Location panier à vendange", "TACOS", "Nantes", "outils_nantes@yahoo.fr");
+
+INSERT INTO annonce(utilisateur_id,categorie_id,titre,date_publication,type,description,
+resume,marque,ville,email) VALUES (6, 4,"cueille-fruits","2018-08-10",
+"location", "Bonjour, je loue un cueille-fruits 2€ la journée, c'est CADEAU!!!!", "Location cueille-fruits", "TACOS", "Nantes", "outils_nantes@yahoo.fr");
+
+INSERT INTO annonce(utilisateur_id,categorie_id,titre,date_publication,type,description,
+resume,marque,ville,email) VALUES (6, 4,"ramasse-fruits à louer","2018-08-03",
+"location", "Bonjour, je loue un ramasse-fruits 2€ la journée, c'est CADEAU!!!!", "Location ramasse-fruits ", "TACOS", "Nantes", "outils_nantes@yahoo.fr");
+
+INSERT INTO annonce(utilisateur_id,categorie_id,titre,date_publication,type,description,
+resume,marque,ville,email) VALUES (6, 4,"faux à louer","2018-08-06",
+"location", "Bonjour, je loue une faux 2€ la journée, c'est CADEAU!!!!", "Location faux", "TACOS", "Nantes", "outils_nantes@yahoo.fr");
+
+INSERT INTO annonce(utilisateur_id,categorie_id,titre,date_publication,type,description,
+resume,marque,ville,email) VALUES (6, 4,"arrosoir à louer","2018-08-07",
+"location", "Bonjour, je loue un arrosoir 2€ la journée, c'est CADEAU!!!!", "Location arrosoir", "TACOS", "Nantes", "outils_nantes@yahoo.fr");
+
+INSERT INTO annonce(utilisateur_id,categorie_id,titre,date_publication,type,description,
+resume,marque,ville,email) VALUES (6, 4,"rateau à louer","2018-08-03",
+"location", "Bonjour, je loue un rateau 2€ la journée, c'est CADEAU!!!!", "Location rateau", "TACOS", "Nantes", "outils_nantes@yahoo.fr");
+
+INSERT INTO annonce(utilisateur_id,categorie_id,titre,date_publication,type,description,
+resume,marque,ville,email) VALUES (6, 4,"balai à gazon à louer","2018-08-10",
+"location", "Bonjour, je loue un balai à gazon 2€ la journée, c'est CADEAU!!!!", "Location balai à gazon", "TACOS", "Nantes", "outils_nantes@yahoo.fr");
+
+INSERT INTO annonce(utilisateur_id,categorie_id,titre,date_publication,type,description,
+resume,marque,ville,email) VALUES (6, 4,"bêche à louer","2018-08-03",
+"location", "Bonjour, je loue une bêche 2€ la journée, c'est CADEAU!!!!", "Location bêche", "TACOS", "Nantes", "outils_nantes@yahoo.fr");
