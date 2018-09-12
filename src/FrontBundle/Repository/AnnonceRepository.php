@@ -44,12 +44,15 @@ class AnnonceRepository extends EntityRepository
         $request = 'SELECT COUNT(a) FROM FrontBundle:Annonce a WHERE a.categorie=:idCat';
         $query = $this -> getEntityManager() -> createQuery($request);
         $query -> setParameter('idCat', $idCat);
-        return $query->getOneOrNullResult();
+            return $query->getOneOrNullResult();
     }
     
-    public function getSearchAnnonce($motcle) {
-        $req = "SELECT a, c FROM FrontBundle:Annonce a JOIN a.categorie c WHERE a.ville LIKE '%$motcle%' OR a.description LIKE '%$motcle%' OR a.resume LIKE '%$motcle%' OR c.libelle LIKE '%$motcle%' ORDER BY a.id DESC, c.id DESC";
-
+    public function getSearchAnnonce($motCle) {
+        $req = "SELECT a, c FROM FrontBundle:Annonce a JOIN a.categorie c "
+                . "WHERE a.ville LIKE '%$motCle%' OR a.description "
+                . "LIKE '%$motCle%' OR a.resume LIKE '%$motCle%' "
+                . "OR c.libelle LIKE '%$motCle%' "
+                . "ORDER BY a.datePublication DESC, c.id DESC";
         $query = $this->getEntityManager()->createQuery($req);
         return $query->getResult();
     }
