@@ -7,7 +7,7 @@
 {% block header %}
     {{ parent() }} 
     {{ form_start(searchForm) }}
-    {{ form_widget(searchForm) }}
+    {{ form_widget(searchForm.motcle,{ 'attr': {'placeholder': 'Rechercher un article, une catégorie etc...'} }) }}
     {{ form_end(searchForm) }}
 {% endblock %}
 
@@ -26,7 +26,7 @@
     </form>
     -->  
 </div>#}
-    <h2>Dernières annonces :</h2>
+    <h2>{{'Dernières annonces :'}}</h2>
     {% for post in posts %}
         <div class="post">
             <h3><a href="{{ path('view', {'id' : post.id}) }}">{{ post.titre|upper }}</a></h3>            

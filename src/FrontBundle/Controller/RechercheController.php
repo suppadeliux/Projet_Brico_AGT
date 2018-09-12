@@ -24,8 +24,7 @@ class RechercheController extends Controller {
         $cats = $rep2->getCategories();
         
         
-        $args = array('posts' => $posts,'cats' => $cats, 'searchForm' => $form->createView());        
-        var_dump($form);
+        $args = array('posts' => $posts,'cats' => $cats, 'searchForm' => $form->createView());
         
         return $this->render('FrontBundle:Recherche:search.html.twig', $args);
     }

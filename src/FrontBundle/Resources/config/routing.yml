@@ -1,10 +1,6 @@
 index:
     path:     /
     defaults: { _controller: FrontBundle:Default:index }
-    
-login:
-    path:     /login
-    defaults: { _controller: FrontBundle:Default:login }
 
 deposerAnnonce:
     path:     /deposerAnnonce
@@ -21,5 +17,11 @@ view:
 search:
     path:     /search
     defaults: { _controller: FrontBundle:Recherche:search }
+    
+login:
+    path:     /login
+    defaults: { _controller: FrontBundle:Utilisateur:login }
 
-
+inscription:
+    path:     /inscription
+    defaults: { _controller: FrontBundle:Utilisateur:inscription }

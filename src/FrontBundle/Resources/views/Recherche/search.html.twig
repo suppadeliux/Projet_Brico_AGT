@@ -26,7 +26,7 @@
     </form>
     -->
 </div>
-    <h2>{{'Résultats recherche pour : ' }}</h2>
+    <h2>{{'Résultats recherche :'}}</h2>
     {% for post in posts %}
         <div class="post">
             <h3><a href="{{ path('view', {'id' : post.id}) }}">{{ post.titre|upper }}</a></h3>
