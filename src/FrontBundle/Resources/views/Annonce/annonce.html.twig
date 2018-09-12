@@ -3,15 +3,9 @@
 {% block title %}
     {{ parent() }} - {{ posts.getTitre() }}
 {% endblock %}
-{% block header %}
-    {{ parent() }} 
-    {{ form_start(searchForm) }}
-    {{ form_widget(searchForm) }}
-    {{ form_end(searchForm) }}
-{% endblock %}
+
 {% block body %}
     <div class="post">
-        <h4>Catégorie > <a href="{{ path('categorie',{'id' : posts.categorie.id}) }}">{{ posts.categorie.libelle|upper }}</a></h4>
         <h3>{{ posts.titre|upper }}</h3>
 	<p class="content">{{ posts.description }}</p>
 	<p>Marque : {{posts.marque}}</p>
@@ -25,4 +19,3 @@
 {% block sidebar %}
     {% include ('FrontBundle:Default:sidebar.html.twig')  %}
 {% endblock %}
-{% block footer %}{{ parent() }}{% endblock %}

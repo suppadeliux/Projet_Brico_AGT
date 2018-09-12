@@ -4,13 +4,6 @@
     {{ parent() }} - {{ cat.libelle }}
 {% endblock %}
 
-{% block header %}
-    {{ parent() }} 
-    {{ form_start(searchForm) }}
-    {{ form_widget(searchForm) }}
-    {{ form_end(searchForm) }}
-{% endblock %}
-
 {% block body %}
     <h2>{{ cat.libelle|upper }}</h2>
     <p>{{ '(' ~ posts_count.1 ~ ' article(s) trouvé(s))'}} 
@@ -55,4 +48,3 @@
 {% block sidebar %}
     {% include ('FrontBundle:Default:sidebar.html.twig')  %}
 {% endblock %}
-{% block footer %}{{ parent() }}{% endblock %}
