@@ -1,12 +1,18 @@
-<html>
+<html lang="fr">
 
     <head>
         <title>{% block title %}Brico Échange{% endblock %}</title>
+
+        <link href="{{ asset('bundles/front/css/bootstrap.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('bundles/front/css/dashboard.css') }}" rel="stylesheet" type="text/css" />
         <link href="{{ asset('bundles/front/css/knacss.css') }}" rel="stylesheet" type="text/css" />
         <link href="{{ asset('bundles/front/css/styles.css') }}" rel="stylesheet" type="text/css" />
+                
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        
     </head>
     <body>
+
         <div class="header">
             {% block header %}
                 <p class="logo"><a href="{{ path('index') }}"><img src="{{ asset('bundles/front/img/logo.png') }}" alt="logo" title="Accueil" /></a></p>
@@ -17,32 +23,21 @@
                 <div class="clear"></div>
                 <hr />
             {% endblock %}
-            {#</div>
-            <div class="container">
-            <form>
-                <div class="input-group">
-                  <input type="text" class="form-control" placeholder="Search">
-                  <div class="input-group-btn">
-                    <button class="btn btn-default" type="submit">
-                      <i class="glyphicon glyphicon-search"></i>
-                    </button>
-                  </div>
-                </div>
-            </form>
-            </div>#}
+        </div>   
 
-            <div class="flex-container">
+        <div class="flex-container">
 
-                {% block sidebar %}
-                {% endblock %}
 
-                <main id="main" role="main" class="flex-item-fluid pas">
-                {% block body %}{% endblock %}
+            {% block sidebar %}
+            {% endblock %}
+
+            <main id="main" role="main" class="flex-item-fluid pas">
+            {% block body %}{% endblock %}
             </main>
         </div>
 
-        <div class="footer">
-            {% block footer %}© 2018 Brico-Échange - Tous droits réservés{% endblock %}
-        </div>
+    <div class="footer">
+        {% block footer %}© 2018 Brico-Échange - Tous droits réservés{% endblock %}
+    </div>
 </body>
 </html>

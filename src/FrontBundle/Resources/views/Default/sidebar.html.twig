@@ -1,17 +1,66 @@
 
-    <aside class="mod w20 pas aside">
-        <nav id="navigation" role="navigation">
+{#<aside class="mod w20 pas aside">
+    <nav id="navigation" role="navigation">
+        <ul class="pam">
+            <li><a href="{{ path('index') }}">Accueil</a></li>
+            <li>Catégories</li>
             <ul class="pam">
-                <li><a href="{{ path('index') }}">Accueil</a></li>
-                <li>Catégories</li>
-                    <ul class="pam">
-                    {% for cat in cats %}
-                        <div class="post">
-                            <li class="categories"><a href="{{path('categorie',{'id':cat.id})}}">{{cat.libelle |capitalize}}</a></li>
-                        </div>
-                    {% endfor %}
-                    </ul>
-                <li><a href="{{ path('deposerAnnonce') }}">Déposer annonce</a></li>
+                {% for cat in cats %}
+                    <div class="post">
+                        <li class="categories"><a href="{{path('categorie',{'id':cat.id})}}">{{cat.libelle |capitalize}}</a></li>
+                    </div>
+                {% endfor %}
             </ul>
-        </nav>
-    </aside>
+            <li><a href="{{ path('deposerAnnonce') }}">Déposer annonce</a></li>
+        </ul>
+    </nav>
+</aside>#}
+
+<nav class="col-md-2 d-none d-md-block bg-light sidebar">
+    <div class="sidebar-sticky">
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link active" href="#">
+                    <span data-feather="home"></span>
+                    <a href="{{ path('index') }}">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                                {#                        <img src="{{ asset('bundles/front/img/iconLoupe.png') }}" />#}
+                        Accueil</a> <span class="sr-only">(current)</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <span data-feather="layers"></span>
+
+                    <a href="{{ path('deposerAnnonce') }}">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-layers"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+                        Déposer annonce</a>
+                </a>
+            </li>
+        </ul>
+        <br/>
+        <h5 {#class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted"#}>
+            <a class="d-flex align-items-center text-muted" href="#">
+                <span data-feather="plus-circle">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                    Catégories</span>
+            </a>
+        </h5>
+        <ul class="nav nav-pills nav-stacked collapse show" id="p2" style="">
+            {% for cat in cats %}
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <span data-feather="file-text"></span>
+                        <a href="{{path('categorie',{'id':cat.id})}}">{{cat.libelle |capitalize}}</a>
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</nav>
+        
+<style>
+    .nav li a {
+        padding: 2px 15px;
+    }
+</style>
