@@ -12,9 +12,15 @@
                 <p class="logo"><a href="{{ path('index') }}"><img src="{{ asset('bundles/front/img/logo.png') }}" alt="logo" title="Accueil" /></a></p>
                 <h1>BRICO ÉCHANGE</h1>
                 <div class="clear"></div>
+		<button type="button" class="btn btn-default navbar-btn"><a href="{{ path('index') }}">Accueil</a></button>
                 <button type="button" class="btn btn-default navbar-btn"><a href="{{ path('login') }}">Inscription</a></button>
                 <button type="button" class="btn btn-default navbar-btn"><a href="{{ path('login') }}">Connexion</a></button>
-                <div class="clear"></div>
+                <button type="button" class="btn btn-default navbar-btn">
+		    <a href="{{ path('deposerAnnonce') }}">Deposer une annonce</a>
+		    <img src="{{ asset('bundles/front/img/write.png') }}" width="20" height="30" class="d-inline-block align-top" alt="">
+		</button>
+		
+		<div class="clear"></div>
                 <hr />
             {% endblock %}
             {#</div>
