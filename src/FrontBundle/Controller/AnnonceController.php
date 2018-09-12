@@ -31,11 +31,12 @@ class AnnonceController extends Controller
         
         $cat = $em->getRepository('FrontBundle:Categorie')->findOneBy(array('id' => $id));
         
-        $posts_count = $this->getDoctrine()->getRepository('FrontBundle:Annonce')->getCountByCat($id);
+        $posts_count = $this->getDoctrine()->getRepository('FrontBundle:Annonce')->getCountByCat($id);        
+        $val = (int)$posts_count[1];
         
         $posts = $this->getDoctrine()->getRepository('FrontBundle:Annonce')-> getByCat($id, $maxPosts, $page);
-        
-        $pages_count = \ceil(26 / $maxPosts);
+              
+        $pages_count = \ceil( $val / $maxPosts);
         
         $pagination = array(
                 'page' => $page,

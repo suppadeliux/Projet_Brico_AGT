@@ -32,7 +32,7 @@ class AnnonceRepository extends EntityRepository
     }
     
     public function getByCat($idCat, $nbPosts, $page) {
-        $request = 'SELECT a FROM FrontBundle:Annonce a WHERE a.categorie=:idCat';
+        $request = 'SELECT a FROM FrontBundle:Annonce a WHERE a.categorie=:idCat ORDER BY a.datePublication DESC';
         $query = $this -> getEntityManager() -> createQuery($request);
         $query -> setParameter('idCat', $idCat);
         $query -> setFirstResult(($page-1) * $nbPosts);
