@@ -14,11 +14,11 @@
 {% endblock %}
 
 {% block body %}
-    <h3>Inscrivez-vous ici</h3>
-    {% if (confirm) %}
-        <p class="confirm">Inscription validée!</p>
-    {% endif %}    
+    <h3>Inscrivez-vous ici</h3> 
     {{ form(inscriptionForm) }}
+    {% if (confirm) %}
+        <p class="confirm" style="color:green">Inscription validée!</p>
+    {% endif %}   
 {% endblock %}
 {% block sidebar %}
     {% include ('FrontBundle:Default:sidebar.html.twig')  %}

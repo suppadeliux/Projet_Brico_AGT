@@ -42,7 +42,7 @@ class UtilisateurController extends Controller {
         $args = array('cats' => $cats,
             'searchForm' => $form->createView(),
             'inscriptionForm' => $formInscription->createView(),
-            'confirm' => $this -> confirm);
+            'confirm' => $this->confirm);
 
         return $this->render('FrontBundle:User:inscription.html.twig', $args);
     }

@@ -6,9 +6,11 @@
 
 {% block header %}
     {{ parent() }} 
+    <div class="container">    
     {{ form_start(searchForm) }}
     {{ form_widget(searchForm.motcle,{ 'attr': {'placeholder': 'Rechercher un article, une catégorie etc...'} }) }}
     {{ form_end(searchForm) }}
+    </div> 
 {% endblock %}
 
 {% block body %}
