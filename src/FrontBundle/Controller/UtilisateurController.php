@@ -1,4 +1,5 @@
 <?php
+
 namespace FrontBundle\Controller;
 
 use FrontBundle\Entity\Utilisateur;
@@ -11,13 +12,12 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
 
-
 class UtilisateurController extends Controller {
 
     private $confirm = false;
 
     public function inscriptionAction() {
-        
+
         $em = $this->getDoctrine()->getManager();
 
         $rep = $em->getRepository('FrontBundle:Categorie');
@@ -28,13 +28,13 @@ class UtilisateurController extends Controller {
                 ->add('motcle', TextType::class, array('label' => false, 'attr' => array('class' => 'form-control')))
                 ->add('submit', SubmitType::class, array('label' => ' ', 'attr' => array('class' => 'btn btn-default glyphicon glyphicon-search')))
                 ->getForm();
-        
-        $formInscription = $this ->getFormInscription();
-        if($formInscription ->isValid()) {
-            $this -> createUser($formInscription);
-            $formInscription = $this ->getFormInscription();       
+
+        $formInscription = $this->getFormInscription();
+        if ($formInscription->isValid()) {
+            $this->createUser($formInscription);
+            $formInscription = $this->getFormInscription();
         }
-        
+
         $args = array('cats' => $cats,
             'searchForm' => $form->createView(),
             'inscriptionForm' => $formInscription->createView(),
@@ -73,7 +73,7 @@ class UtilisateurController extends Controller {
         if (!$this->confirm) {
             $formInscription->handleRequest($this->get('request'));
         }
-        
+
         return $formInscription;
     }
 
@@ -81,17 +81,17 @@ class UtilisateurController extends Controller {
         $em = $this->getDoctrine()->getManager();
 
         $user = new Utilisateur();
-        $user -> setNom($formInscription->get('nom')->getData());
-        $user -> setMdp($formInscription->get('mdp')->getData());
-        $user -> setEmail($formInscription->get('email')->getData());
-        $user -> setSiteWeb($formInscription->get('siteWeb')->getData());
+        $user->setNom($formInscription->get('nom')->getData());
+        $user->setMdp($formInscription->get('mdp')->getData());
+        $user->setEmail($formInscription->get('email')->getData());
+        $user->setSiteWeb($formInscription->get('siteWeb')->getData());
 
         $em->persist($user);
         $em->flush();
 
         $this->confirm = true;
     }
-    
+
     public function connexionAction() {
         $em = $this->getDoctrine()->getManager();
 
@@ -103,31 +103,43 @@ class UtilisateurController extends Controller {
                 ->add('motcle', TextType::class, array('label' => false, 'attr' => array('class' => 'form-control')))
                 ->add('submit', SubmitType::class, array('label' => ' ', 'attr' => array('class' => 'btn btn-default glyphicon glyphicon-search')))
                 ->getForm();
-        
-        $formConnexion = $this ->getFormConnexion();
-        if($formConnexion ->isValid()) {
-            $verif = $this -> checkConnexion($formConnexion);
-            var_dump($verif);
-            if($this -> confirm === true){
-                $typeUser = $verif['type'] -> getType();
-                var_dump($typeUser);
-//                if($typeUser == 1){
-//                   return $this -> render('FrontBundle:User:admin.html.twig'); 
-//                }
+
+        $rep2 = $em->getRepository('FrontBundle:Annonce');
+        $posts = $rep2->getLastPosts(10);
+
+        $formConnexion = $this->getFormConnexion();
+
+        if ($formConnexion->isValid()) {
+
+            $verif = $this->checkConnexion($formConnexion);
+            if ($this->confirm === true) {
+                $typeUser = $verif->getType()->getId();
+                $args = array('cats' => $cats,
+                    'searchForm' => $form->createView(),
+                    'connexionForm' => $formConnexion->createView(),
+                    'confirm' => $this->confirm,
+                    'typeUser' => $typeUser,
+                    'posts' => $posts);
+                if ($typeUser === 1) {
+                    return $this->render('FrontBundle:User:admin.html.twig', $args);
+                } else {
+                    
+                }
             }
         }
         
         $args = array('cats' => $cats,
-            'searchForm' => $form->createView(),
-            'connexionForm' => $formConnexion->createView(),
-            'confirm' => $this->confirm);
+                    'searchForm' => $form->createView(),
+                    'connexionForm' => $formConnexion->createView(),
+                    'confirm' => $this->confirm);
+
 
         return $this->render('FrontBundle:User:connexion.html.twig', $args);
     }
-    
-    public function getFormConnexion(){
+
+    public function getFormConnexion() {
         $user = new Utilisateur();
-        $formConnexion = $this ->createFormBuilder($user)
+        $formConnexion = $this->createFormBuilder($user)
                 ->add('nom', TextType::class, array(
                     'label' => 'Identifiant :',
                     'attr' => array('class' => 'form-control',
@@ -138,28 +150,29 @@ class UtilisateurController extends Controller {
                         'placeholder' => 'Votre mot de passe...')))
                 ->add('submit', SubmitType::class, array('label' => 'Connexion'))
                 ->getForm();
-        
-        if(!$this->confirm) {
-            $formConnexion ->handleRequest($this->get('request'));
+
+        if (!$this->confirm) {
+            $formConnexion->handleRequest($this->get('request'));
         }
-        
+
         return $formConnexion;
     }
-    
+
     public function checkConnexion($formConnexion) {
         $em = $this->getDoctrine()->getManager();
-                
+
         $nom = $formConnexion->get('nom')->getData();
         $mdp = $formConnexion->get('mdp')->getData();
-        
+
         $repository = $em->getRepository('FrontBundle:Utilisateur');
-        $verif = $repository->checkLogin($nom,$mdp);
-        
-        if ($verif === null){
-            return $this -> confirm;
+        $verif = $repository->checkLogin($nom, $mdp);
+
+        if ($verif === null) {
+            return $this->confirm;
         } else {
-            $this -> confirm = true;
+            $this->confirm = true;
             return $verif;
         }
     }
+
 }

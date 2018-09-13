@@ -6,35 +6,38 @@
         <link href="{{ asset('bundles/front/css/bootstrap.css') }}" rel="stylesheet" type="text/css" />
         <link href="{{ asset('bundles/front/css/dashboard.css') }}" rel="stylesheet" type="text/css" />
         <link href="{{ asset('bundles/front/css/knacss.css') }}" rel="stylesheet" type="text/css" />
-        <link href="{{ asset('bundles/front/css/styles.css') }}" rel="stylesheet" type="text/css" />
-                
+
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-        
+
     </head>
     <body>
 
-        <div class="header">
-            {% block header %}
-                <p class="logo"><a href="{{ path('index') }}"><img src="{{ asset('bundles/front/img/logo.png') }}" alt="logo" title="Accueil" /></a></p>
-                <h1>BRICO ÉCHANGE</h1>
-                <div class="clear"></div>
+
+        {% block header %}
+            <div align="center">
+                <span>
+                    <a href="{{ path('index') }}"><img src="{{ asset('bundles/front/img/logo.png') }}" alt="logo" title="Accueil" /></a>
+                </span>
+                <span class="h1">
+                    BRICO ÉCHANGE
+                </span>
+            </div>
+            <div align="center">    
                 <button type="button" class="btn btn-default navbar-btn"><a href="{{ path('inscription') }}">Inscription</a></button>
                 <button type="button" class="btn btn-default navbar-btn"><a href="{{ path('connexion') }}">Mon Compte</a></button>
-                <div class="clear"></div>
-                <hr />
-            {% endblock %}
-        </div>   
+            </div>
+        {% endblock %}
+
 
         <div class="flex-container">
-
 
             {% block sidebar %}
             {% endblock %}
 
             <main id="main" role="main" class="flex-item-fluid pas">
             {% block body %}{% endblock %}
-            </main>
-        </div>
+        </main>
+    </div>
 
     <div class="footer">
         {% block footer %}© 2018 Brico-Échange - Tous droits réservés{% endblock %}
