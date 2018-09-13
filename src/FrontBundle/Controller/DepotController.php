@@ -30,7 +30,6 @@ class DepotController extends Controller
 	$formAnnnonce = $this ->getFormAnnonce();
 
 	if($formAnnnonce->isValid()){
-	    
 	    $this ->insertAnnonce($formAnnnonce);
 	    return $this->render('FrontBundle:ConfirmAnnonce:confirmer.html.twig');
 	}

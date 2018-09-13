@@ -24,7 +24,7 @@ search:
     
 connexion:
     path:     /connexion
-    defaults: { _controller: FrontBundle:Utilisateur:connexion }
+    defaults: { _controller: FrontBundle:Utilisateur:connexion }   
 
 inscription:
     path:     /inscription
