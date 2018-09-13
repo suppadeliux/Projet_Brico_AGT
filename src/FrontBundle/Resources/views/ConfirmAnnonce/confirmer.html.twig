@@ -1,0 +1,24 @@
+{% extends 'FrontBundle::base.html.twig' %}
+
+{% block head %}
+    {{ parent() }} - Accueil
+{% endblock %}
+
+{% block header %}
+    {{ parent() }} 
+{#    {{ form_start(searchForm) }}
+    {{ form_widget(searchForm) }}
+    {{ form_end(searchForm) }}#}
+{% endblock %}
+
+{% block body %}
+    
+    <h3>Bravo, vous avez reussi!</h3>
+    
+    
+{% endblock %}
+{% block sidebar %}
+     {{ parent() }} 
+{#    {% include ('FrontBundle:Default:sidebar.html.twig')  %}#}
+{% endblock %}
+{% block footer %}{{ parent() }}{% endblock %}

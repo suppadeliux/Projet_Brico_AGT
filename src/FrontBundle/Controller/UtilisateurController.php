@@ -3,7 +3,6 @@
 namespace FrontBundle\Controller;
 
 use FrontBundle\Entity\Utilisateur;
-use FrontBundle\Entity\TypeUtilisateur;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
@@ -110,7 +109,6 @@ class UtilisateurController extends Controller {
         $formConnexion = $this->getFormConnexion();
 
         if ($formConnexion->isValid()) {
-
             $verif = $this->checkConnexion($formConnexion);
             if ($this->confirm === true) {
                 $typeUser = $verif->getType()->getId();
@@ -121,17 +119,17 @@ class UtilisateurController extends Controller {
                     'typeUser' => $typeUser,
                     'posts' => $posts);
                 if ($typeUser === 1) {
-                    return $this->render('FrontBundle:User:admin.html.twig', $args);
+                    return $this->render('FrontBundle:Admin:admin.html.twig', $args);
                 } else {
-                    
+                    return $this->render('FrontBundle:Default:index.html.twig', $args);
                 }
             }
         }
-        
+
         $args = array('cats' => $cats,
-                    'searchForm' => $form->createView(),
-                    'connexionForm' => $formConnexion->createView(),
-                    'confirm' => $this->confirm);
+            'searchForm' => $form->createView(),
+            'connexionForm' => $formConnexion->createView(),
+            'confirm' => $this->confirm);
 
 
         return $this->render('FrontBundle:User:connexion.html.twig', $args);

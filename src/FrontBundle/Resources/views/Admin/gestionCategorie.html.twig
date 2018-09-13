@@ -1,0 +1,25 @@
+{% extends 'FrontBundle::base.html.twig' %}
+{% block title %}
+    {{ parent() }} - Administration Catégorie
+{% endblock %}
+
+{% block header %}
+    <div align="center">
+        <span>
+            <a href="{{ path('index') }}"><img src="{{ asset('bundles/front/img/logo.png') }}" alt="logo" title="Accueil" /></a>
+        </span>
+        <span class="h1">
+            BRICO ÉCHANGE
+        </span>
+    </div>
+    <br>
+    <div align="center">
+        <button type="button" class="btn btn-default navbar-btn"><a href="{{ path('index') }}">Gestion des Annonces</a></button>
+{#        <button type="button" class="btn btn-default navbar-btn"><a href="{{ path('index') }}">Gestion des Catégories</a></button>#}
+        <button type="button" class="btn btn-default navbar-btn"><a href="{{ path('index') }}">Gestion des Utilisateurs</a></button>
+    </div>
+{% endblock %}
+
+{% block body %}
+    <h2>Gestion des catégories</h2>
+{% endblock %}

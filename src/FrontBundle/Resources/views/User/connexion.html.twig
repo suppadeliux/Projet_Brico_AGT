@@ -15,6 +15,9 @@
 
 {% block body %}
     <h3>Connectez-vous à votre compte ici</h3>
+    {% if (confirm) == false %}
+        <p class="confirm" style="color:red">Échec de la connexion! Identifiant ou mot de passe invalide</p>
+    {% endif %}
     {{ form(connexionForm) }}
 {% endblock %}
 {% block sidebar %}

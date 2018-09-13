@@ -11,105 +11,31 @@
 {% endblock %}
 
 {% block header %}
-    {{ parent() }} 
-    <div class="container">    
-    {{ form_start(searchForm) }}
-    {{ form_widget(searchForm.motcle,{ 'attr': {'placeholder': 'Rechercher un article, une catégorie etc...'} }) }}
-    {{ form_end(searchForm) }}
-    </div> 
+
+	{{ parent() }}
+{#	{{ form_start(searchForm) }}
+	{{ form_widget(searchForm) }}#}
+	
 {% endblock %}
 
 {% block body %}
-    
-    <div class="container">
-	<div class="input-group row">
-	    <h1>Deposer une annonce :</h1>
-	</div><br>
-    <form>
-	<div class="input-group row">
-	    <span class="input-group-addon" id="basic-addon1">Titre de l'annonce : </span>
-	    <input type="text" class="form-control" placeholder="Marteau à vendre..." aria-describedby="basic-addon1">
-	</div><br>
-	
-	<div class="form-group row">
-	    <label for="example-date-input" class="col-2 col-form-label">Date</label>
-	    <div class="col-10">
-	      <input class="form-control" type="date" value="2011-08-19" id="example-date-input">
-	    </div>
-	</div>
-	
-	<div class="form-group row">
-	    <label for="example-text-input" class="col-2 col-form-label">Type d'annonce</label>
-	</div>
-	<div class="form-group row">
-	    <label class="radio-inline" for="exampleRadios1">
-		<input class="form-check-input" type="radio" name="montyperadio" id="exampleRadios1" value="Prêt" checked="checked">Prêt
-	    </label>	
-	    <label class="radio-inline" for="exampleRadios2">
-		<input class="form-check-input" type="radio" name="montyperadio" id="exampleRadios2" value="Location">Location
-	    </label>
-	    <label class="radio-inline" for="exampleRadios3">
-		<input class="form-check-input" type="radio" name="montyperadio" id="exampleRadios3" value="Vente">Vente
-	    </label>
-	</div>
+    {{ parent() }}
 
-	<div class="form-group row">
-	  <label for="descriptif">Descriptif de l'annonce: </label>
-	  <textarea type="textarea" class="form-control" rows="5" id="descriptif"></textarea>
-	</div><br>
-	
-	
-	<div class="input-group row">
-	  <span class="input-group-addon" id="basic-addon2"> Resumé de l'annonce</span>
-	  <input type="text" class="form-control" placeholder="Ex: Perceuse a vendre à 30 € à Nantes" aria-describedby="basic-addon1"><br>
-	</div><br>
-	
-	<div class="input-group row">
-	    <span class="input-group-addon">@</span>
-	    <input type="text" class="form-control" placeholder="monmail@sfr.fr">
-	</div><br>
-	
-	<div class="input-group row">
-	  <span class="input-group-addon" id="basic-addon2">Marque</span>
-	  <input type="text" class="form-control" placeholder="Akita...etc" aria-describedby="basic-addon2"><br>
-	</div><br>
-	<div class="input-group row">
-	  <span class="input-group-addon" id="basic-addon2">Ville</span>
-	  <input type="text" class="form-control" placeholder="Votre ville..." aria-describedby="basic-addon2"><br>
-	</div><br>
-	<div class="input-group row">
-	  <span class="input-group-addon" id="basic-addon2">Categorie</span>
-	  <input type="text" class="form-control" placeholder="Outillage à main" aria-describedby="basic-addon2"><br>
-	</div><br>
-	
-	<div class="input-group row">
-	  <span class="input-group-addon" id="basic-addon3">Votre site web : </span>
-	  <input type="text" class="form-control" id="basic-url" placeholder="www.mon-site.fr" aria-describedby="basic-addon3">
-	</div><br>
-	
-	<div class="form-group row">
-	  <label for="photo">Choisir une photo</label>
-	  <input type="file" class="form-control-file" id="photo" accept="image/*">
-	  <label for="photo">*Uniquement des photos(jpeg, png,etc)</label>
-	</div>
-	<hr>
-	<div class="form-group row">
-	  <span id="basic-addon2">Souhaitez-vous que votre annonce soit repris par un de nos partenaire publics?</span>
-	  
-	  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="true" checked>
-	  <span class="form-check-label" for="exampleRadios1">Oui</span>
-	  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="false">
-	  <span class="form-check-label" for="exampleRadios1">Non</span>
-	</div><br>
-	
-	<div class="form-group row">
-	    <button type="submit" class="btn btn-default">Enregistrer</button>
-	</div>
-	<hr>
-    </form>
-    </div>
+	<div>
+	    <h1 class="h4 mb-4">Deposer une annonce: </h1>
+	    {#{{form_label(formAnnonce)}}#}
+	    {{ form_start(formAnnonce) }}
+	    {{ form_widget(formAnnonce) }}
+	    {{ form_end(formAnnonce) }}
+	    {{form_errors(formAnnonce)}}
+	</div>    
 {% endblock %}
+
+
 {% block sidebar %}
+
     {% include ('FrontBundle:Default:sidebar.html.twig')  %}
 {% endblock %}
-{% block footer %}{{ parent() }}{% endblock %}
+{% block footer %}
+    <div>{{ parent() }}</div>
+{% endblock %}

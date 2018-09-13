@@ -5,6 +5,10 @@ index:
 deposerAnnonce:
     path:     /deposerAnnonce
     defaults: { _controller: FrontBundle:Depot:deposerAnnonce }
+    
+confirmer:
+    path:     /confirmerAnnonce
+    defaults: { _controller: FrontBundle:Form:inscription }    
 
 categorie:
     path:     /categorie/{id}/{page}
@@ -25,3 +29,7 @@ connexion:
 inscription:
     path:     /inscription
     defaults: { _controller: FrontBundle:Utilisateur:inscription }
+    
+gestion_categorie:
+    path:     /gestionCat
+    defaults: { _controller: FrontBundle:Admin:categorie }    
