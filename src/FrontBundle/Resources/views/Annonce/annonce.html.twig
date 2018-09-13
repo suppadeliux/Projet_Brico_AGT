@@ -21,6 +21,9 @@
 	<p class="details">
 	    Le <span>{{ posts.datePublication|date('d/m/Y') ~ ' à ' ~ posts.ville|upper }}</span>
 	</p>
+
+        <img src="{{ asset('uploads/annonces/' ~ posts.photo) }}" />
+        
     </div>
     <hr />
 {% endblock %}

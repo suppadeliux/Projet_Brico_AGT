@@ -1,4 +1,5 @@
 <?php
+
 namespace FrontBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
@@ -8,64 +9,69 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="annonce")
  */
 class Annonce {
-    
-     /**
+
+    /**
      * @ORM\Id
      * @ORM\Column(name="id",type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-    
+
     /**
-    * @ORM\Column(type="string",length=100)
-    */
+     * @ORM\Column(type="string",length=100)
+     */
     private $titre;
-    
+
     /**
      * @ORM\Column(type="datetime")
      */
     private $datePublication;
-    
+
     /**
-    * @ORM\Column(type="string",length=20)
-    */
+     * @ORM\Column(type="string",length=20)
+     */
     private $type;
-    
+
     /**
-    * @ORM\Column(type="text",length=255)
-    */
+     * @ORM\Column(type="text",length=255)
+     */
     private $description;
-    
+
     /**
-    * @ORM\Column(type="string",length=300)
-    */
+     * @ORM\Column(type="string",length=300)
+     */
     private $resume;
-    
+
     /**
-    * @ORM\Column(type="string",length=100)
-    */
+     * @ORM\Column(type="string",length=300)
+     */
+    private $photo; 
+
+    /**
+     * @ORM\Column(type="string",length=100)
+     */
     private $marque;
-    
+
     /**
-    * @ORM\Column(type="string",length=100)
-    */
+     * @ORM\Column(type="string",length=100)
+     */
     private $ville;
-    
+
     /**
-    * @ORM\Column(type="string",length=100)
-    */
+     * @ORM\Column(type="string",length=100)
+     */
     private $email;
-    
+
     /**
-    * @ORM\ManyToOne(targetEntity="Utilisateur", inversedBy="annonces")
-    */
+     * @ORM\ManyToOne(targetEntity="Utilisateur", inversedBy="annonces")
+     */
     private $utilisateur;
-    
+
     /**
      * @ORM\ManyToOne(targetEntity="Categorie", inversedBy="annonces")
      */
     private $categorie;
-    
+
     public function getId() {
         return $this->id;
     }
@@ -84,6 +90,10 @@ class Annonce {
 
     public function getResume() {
         return $this->resume;
+    }
+
+    public function getPhoto() {
+        return $this->photo;
     }
 
     public function getMarque() {
@@ -131,6 +141,11 @@ class Annonce {
         return $this;
     }
 
+    public function setPhoto($photo) {
+        $this->photo = $photo;
+        return $this;
+    }
+
     public function setMarque($marque) {
         $this->marque = $marque;
         return $this;
@@ -154,8 +169,8 @@ class Annonce {
     public function setCategorie($categorie) {
         $this->categorie = $categorie;
         return $this;
-    }   
-    
+    }
+
     public function getDatePublication() {
         return $this->datePublication;
     }
@@ -164,6 +179,5 @@ class Annonce {
         $this->datePublication = $datePublication;
         return $this;
     }
-
 
 }

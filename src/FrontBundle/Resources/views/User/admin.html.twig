@@ -1,0 +1,32 @@
+{% extends 'FrontBundle:Default:index.html.twig' %}
+{% block title %}
+    {{ parent() }} - Administration
+{% endblock %}
+
+{% block header %}
+    <div align="center">
+        <span>
+            <a href="{{ path('index') }}"><img src="{{ asset('bundles/front/img/logo.png') }}" alt="logo" title="Accueil" /></a>
+        </span>
+        <span class="h1">
+            BRICO ÉCHANGE
+        </span>
+    </div>
+    <br>
+    <div align="center">
+        <button type="button" class="btn btn-default navbar-btn"><a href="{{ path('index') }}">Gestion des Annonces</a></button>
+        <button type="button" class="btn btn-default navbar-btn"><a href="{{ path('index') }}">Gestion des Catégories</a></button>
+        <button type="button" class="btn btn-default navbar-btn"><a href="{{ path('index') }}">Gestion des Utilisateurs</a></button>
+    </div>
+    <hr>
+    <div class="container">    
+        {{ form_start(searchForm) }}
+        {{ form_widget(searchForm.motcle,{ 'attr': {'placeholder': 'Rechercher un article, une catégorie etc...'} }) }}
+        {{ form_end(searchForm) }}
+    </div>
+{% endblock %}
+
+{% block sidebar %}
+    {{ parent() }}
+{% endblock %}    
+

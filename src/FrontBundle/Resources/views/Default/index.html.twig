@@ -22,6 +22,7 @@
             <p class="content">{{ post.resume|capitalize }}</p>
             <p class="details">Le <span>{{ post.datePublication|date('d/m/Y') ~ ' à ' ~ post.ville|upper }}</span> </p>
             <h5>Catégorie > <a href="{{ path('categorie',{'id' : post.categorie.id}) }}">{{ post.categorie.libelle|upper }}</a></h5>
+            <img src="{{ asset('uploads/annonces/' ~ post.photo) }}" />
             <hr/>
         </div>
     {% endfor %}
