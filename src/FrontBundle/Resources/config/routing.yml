@@ -18,9 +18,9 @@ search:
     path:     /search
     defaults: { _controller: FrontBundle:Recherche:search }
     
-login:
-    path:     /login
-    defaults: { _controller: FrontBundle:Utilisateur:login }
+connexion:
+    path:     /connexion
+    defaults: { _controller: FrontBundle:Utilisateur:connexion }
 
 inscription:
     path:     /inscription

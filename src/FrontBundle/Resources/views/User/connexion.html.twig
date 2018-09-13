@@ -1,0 +1,23 @@
+{% extends 'FrontBundle::base.html.twig' %}
+{% block title %}
+    {{ parent() }} - Accueil
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+{% endblock %}
+
+{% block header %}
+    {{ parent() }}
+<div class="container">    
+    {{ form_start(searchForm) }}
+    {{ form_widget(searchForm) }}
+    {{ form_end(searchForm) }}
+</div>    
+{% endblock %}
+
+{% block body %}
+    <h3>Connectez-vous à votre compte ici</h3>
+    {{ form(connexionForm) }}
+{% endblock %}
+{% block sidebar %}
+    {% include ('FrontBundle:Default:sidebar.html.twig')  %}
+{% endblock %}
+{% block footer %}{{ parent() }}{% endblock %}

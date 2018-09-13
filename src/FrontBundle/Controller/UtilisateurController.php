@@ -2,7 +2,7 @@
 namespace FrontBundle\Controller;
 
 use FrontBundle\Entity\Utilisateur;
-
+use FrontBundle\Entity\TypeUtilisateur;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
@@ -15,10 +15,6 @@ use Symfony\Component\Form\Extension\Core\Type\UrlType;
 class UtilisateurController extends Controller {
 
     private $confirm = false;
-
-    public function loginAction() {
-        return array();
-    }
 
     public function inscriptionAction() {
         
@@ -48,11 +44,10 @@ class UtilisateurController extends Controller {
     }
 
     protected function getFormInscription() {
-
         $user = new Utilisateur();
         $formInscription = $this->createFormBuilder($user)
                 ->add('nom', TextType::class, array(
-                    'label' => 'Nom :',
+                    'label' => 'Identifiant :',
                     'attr' => array('class' => 'form-control',
                         'placeholder' => 'Votre nom...')))
                 ->add('mdp', RepeatedType::class, array(
@@ -96,5 +91,75 @@ class UtilisateurController extends Controller {
 
         $this->confirm = true;
     }
+    
+    public function connexionAction() {
+        $em = $this->getDoctrine()->getManager();
 
+        $rep = $em->getRepository('FrontBundle:Categorie');
+        $cats = $rep->getCategories();
+
+        $form = $this->createFormBuilder()
+                ->setAction($this->generateUrl('search'))
+                ->add('motcle', TextType::class, array('label' => false, 'attr' => array('class' => 'form-control')))
+                ->add('submit', SubmitType::class, array('label' => ' ', 'attr' => array('class' => 'btn btn-default glyphicon glyphicon-search')))
+                ->getForm();
+        
+        $formConnexion = $this ->getFormConnexion();
+        if($formConnexion ->isValid()) {
+            $verif = $this -> checkConnexion($formConnexion);
+            var_dump($verif);
+            if($this -> confirm === true){
+                $typeUser = $verif['type'] -> getType();
+                var_dump($typeUser);
+//                if($typeUser == 1){
+//                   return $this -> render('FrontBundle:User:admin.html.twig'); 
+//                }
+            }
+        }
+        
+        $args = array('cats' => $cats,
+            'searchForm' => $form->createView(),
+            'connexionForm' => $formConnexion->createView(),
+            'confirm' => $this->confirm);
+
+        return $this->render('FrontBundle:User:connexion.html.twig', $args);
+    }
+    
+    public function getFormConnexion(){
+        $user = new Utilisateur();
+        $formConnexion = $this ->createFormBuilder($user)
+                ->add('nom', TextType::class, array(
+                    'label' => 'Identifiant :',
+                    'attr' => array('class' => 'form-control',
+                        'placeholder' => 'Votre identifiant de connexion...')))
+                ->add('mdp', PasswordType::class, array(
+                    'label' => 'Mot de passe :',
+                    'attr' => array('class' => 'form-control',
+                        'placeholder' => 'Votre mot de passe...')))
+                ->add('submit', SubmitType::class, array('label' => 'Connexion'))
+                ->getForm();
+        
+        if(!$this->confirm) {
+            $formConnexion ->handleRequest($this->get('request'));
+        }
+        
+        return $formConnexion;
+    }
+    
+    public function checkConnexion($formConnexion) {
+        $em = $this->getDoctrine()->getManager();
+                
+        $nom = $formConnexion->get('nom')->getData();
+        $mdp = $formConnexion->get('mdp')->getData();
+        
+        $repository = $em->getRepository('FrontBundle:Utilisateur');
+        $verif = $repository->checkLogin($nom,$mdp);
+        
+        if ($verif === null){
+            return $this -> confirm;
+        } else {
+            $this -> confirm = true;
+            return $verif;
+        }
+    }
 }

@@ -3,12 +3,12 @@ namespace FrontBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="FrontBundle\Repository\UtilisateurRepository")
  * @ORM\Table(name="utilisateur")
  */
 class Utilisateur {
     
-     /**
+    /**
      * @ORM\Id
      * @ORM\Column(name="id",type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
@@ -40,6 +40,15 @@ class Utilisateur {
      */
     private $annonces;
     
+    /**
+     * @ORM\ManyToOne(targetEntity="TypeUtilisateur", inversedBy="users")
+     */
+    private $type;
+    
+    public function getType() {
+        return $this->type;
+    }
+
     public function getId() {
         return $this->id;
     }
@@ -93,4 +102,9 @@ class Utilisateur {
         $this->annonces = $annonces;
         return $this;
     }
+    public function setType($type) {
+        $this->type = $type;
+        return $this;
+    }
+
 }    
