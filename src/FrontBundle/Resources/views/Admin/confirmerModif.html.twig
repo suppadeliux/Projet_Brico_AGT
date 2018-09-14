@@ -1,0 +1,10 @@
+{% extends 'FrontBundle:ConfirmAnnonce:confirmer.html.twig' %}
+
+{% block head %}
+    {{ parent() }} - Confirmation modification
+{% endblock %}
+
+{% block body %}    
+    <h3>Modification effectuée avec succès</h3>
+    <a href="{{ path('index') }}"> Retour vers l'accueil</a>   
+{% endblock %}

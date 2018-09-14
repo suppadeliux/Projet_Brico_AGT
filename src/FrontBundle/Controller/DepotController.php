@@ -69,7 +69,7 @@ class DepotController extends Controller
 			'attr' => array('class' =>'form-control','placeholder'=>'Marteau à vendre...','aria-describedby'=>'basic-addon1'));
 	$builder ->add('titre', TextType::class, $titreOptions);
 	
-	$typeOptions = array('label' => 'Type de l\'annonce', 'choices' => array('Pret' => '1','Location' => '2','Vente' => '3'),'choices_as_values' => true,'multiple'=>false,'expanded'=>true);
+	$typeOptions = array('label' => 'Type de l\'annonce', 'choices' => array('Pret' => 'Pret','Location' => 'Location','Vente' => 'Vente'),'choices_as_values' => true,'multiple'=>false,'expanded'=>true);
 	$builder ->add('type', ChoiceType::class, $typeOptions);
 	
 	$builder->add('resume', TextType::class, array('label' => 'Resumé de l\'annonce', 

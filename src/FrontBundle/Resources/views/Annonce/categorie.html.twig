@@ -14,20 +14,24 @@
 {% endblock %}
 
 {% block body %}
-    <h2>{{ cat.libelle|upper }}</h2>
-    <p>{{ '(' ~ posts_count.1 ~ ' article(s) trouvé(s))'}} 
-    </p>
-    <div class="post">
-        {% for value in posts %}            
+    <h1>{{ cat.libelle|upper }}</h1>
+    <p>{{ '(' ~ posts_count.1 ~ ' article(s) trouvé(s))'}}</p>
+    <hr> 
+    {% for post in posts %}
         <div class="post">
-            <h3><a href="{{ path('view', {'id' : value.id}) }}">{{ value.titre|upper }}</a></h3>
-            <p>Marque : {{ value.marque|upper }}</p>
-            <p class="content">{{ value.resume|capitalize }}</p>
-            <p class="details">Le <span>{{ value.datePublication|date('d/m/Y') ~ ' à ' ~ value.ville|upper }}</span> </p>
+
+            <div class="detail">
+                <h3><a href="{{ path('view', {'id' : post.id}) }}">{{ post.type|capitalize }} - {{ post.titre|upper }}</a></h3>             
+                <p>Marque : {{ post.marque|upper }}</p>
+                <p class="content">{{ post.resume|capitalize }}</p>
+                <p class="details">Le <span>{{ post.datePublication|date('d/m/Y') ~ ' à ' ~ post.ville|upper }}</span> </p>
+            </div>
+            <div class="img">
+                <a href="{{ path('view', {'id' : post.id}) }}"> <img src="{{ asset('uploads/annonces/' ~ post.photo) }}" /></a>
+            </div>
             <hr/>
         </div>
-        {% endfor %}
-    </div>
+    {% endfor %}
     {% if cat.annonces is empty %}
             <p>Désolé, aucun article correspondant à cette catégorie...</p>
             <a href="{{ path('index') }}">Retour vers l'accueil</a>

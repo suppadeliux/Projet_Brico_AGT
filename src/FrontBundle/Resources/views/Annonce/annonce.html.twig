@@ -14,15 +14,17 @@
 {% block body %}
     <div class="post">
         <h4>Catégorie > <a href="{{ path('categorie',{'id' : posts.categorie.id}) }}">{{ posts.categorie.libelle|upper }}</a></h4>
-        <h3>{{ posts.titre|upper }}</h3>
+        <h3>{{ posts.type }} - {{ posts.titre|upper }}</h3>        
 	<p class="content">{{ posts.description }}</p>
 	<p>Marque : {{posts.marque}}</p>
 	
 	<p class="details">
 	    Le <span>{{ posts.datePublication|date('d/m/Y') ~ ' à ' ~ posts.ville|upper }}</span>
+            <span> -- Contact : <a href="mailto:{{ posts.email }}">{{ posts.email }}</a> </span>
 	</p>
 
         <img src="{{ asset('uploads/annonces/' ~ posts.photo) }}" />
+        
         
     </div>
     <hr />

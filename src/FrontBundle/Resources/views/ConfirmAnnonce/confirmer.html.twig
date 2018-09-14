@@ -1,7 +1,7 @@
 {% extends 'FrontBundle::base.html.twig' %}
 
 {% block head %}
-    {{ parent() }} - Accueil
+    {{ parent() }} - Confirmation publication
 {% endblock %}
 
 {% block header %}
@@ -14,7 +14,7 @@
 {% block body %}
     
     <h3>Bravo, vous avez reussi!</h3>
-    
+    <a href="{{ path('index') }}"> Retour vers l'accueil</a>  
     
 {% endblock %}
 {% block sidebar %}

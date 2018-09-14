@@ -17,12 +17,17 @@
     <h2>{{'Dernières annonces :'}}</h2>
     {% for post in posts %}
         <div class="post">
-            <h3><a href="{{ path('view', {'id' : post.id}) }}">{{ post.titre|upper }}</a></h3>            
-            <p>Marque : {{ post.marque|upper }}</p>
-            <p class="content">{{ post.resume|capitalize }}</p>
-            <p class="details">Le <span>{{ post.datePublication|date('d/m/Y') ~ ' à ' ~ post.ville|upper }}</span> </p>
-            <h5>Catégorie > <a href="{{ path('categorie',{'id' : post.categorie.id}) }}">{{ post.categorie.libelle|upper }}</a></h5>
-            <img src="{{ asset('uploads/annonces/' ~ post.photo) }}" />
+
+            <div class="detail">
+                <h3><a href="{{ path('view', {'id' : post.id}) }}">{{ post.type|capitalize }} - {{ post.titre|upper }}</a></h3>             
+                <p>Marque : {{ post.marque|upper }}</p>
+                <p class="content">{{ post.resume|capitalize }}</p>
+                <p class="details">Le <span>{{ post.datePublication|date('d/m/Y') ~ ' à ' ~ post.ville|upper }}</span> </p>
+                <h5>Catégorie > <a href="{{ path('categorie',{'id' : post.categorie.id}) }}">{{ post.categorie.libelle|upper }}</a></h5>
+            </div>
+            <div class="img">
+                <a href="{{ path('view', {'id' : post.id}) }}"> <img src="{{ asset('uploads/annonces/' ~ post.photo) }}" /></a>
+            </div>
             <hr/>
         </div>
     {% endfor %}

@@ -21,5 +21,15 @@ class CategorieRepository extends EntityRepository{
         $query = $this->getEntityManager()->createQuery($request);
         return $query->getResult();
     }
+    
+    public function modifCategorie($newLibelle, $idCat) {
+        $request = 'UPDATE c SET c.libelle=:newLibelle WHERE c.id=:idCat';
+        $query = $this->getEntityManager()->createQuery($request);
+        $query->setParameters(array(
+            'newLibelle' => $newLibelle,
+            'idCat' => $idCat
+                ));
+        return $query->getOneOrNullResult();
+    }
 }
 

@@ -34,6 +34,14 @@
   box-sizing: border-box;
 }
 
+.img{
+    float:left;
+    margin :10px;
+}
+
+.detail{
+    float: left;
+}
 
 html {
   font-family: sans-serif;
