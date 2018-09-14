@@ -14,6 +14,7 @@ use Symfony\Component\Form\Extension\Core\Type\UrlType;
 class UtilisateurController extends Controller {
 
     private $confirm = false;
+    private $submit = false;
 
     public function inscriptionAction() {
 
@@ -108,13 +109,14 @@ class UtilisateurController extends Controller {
 
         $formConnexion = $this->getFormConnexion();
 
-        if ($formConnexion->isValid()) {
+        if ($formConnexion->isValid() && $formConnexion->isSubmitted()) {
             $verif = $this->checkConnexion($formConnexion);
-            if ($this->confirm === true) {
+            if ($this->confirm === true && $this->submit === true) {
                 $typeUser = $verif->getType()->getId();
                 $args = array('cats' => $cats,
                     'searchForm' => $form->createView(),
                     'connexionForm' => $formConnexion->createView(),
+                    'submit' => $this->submit,
                     'confirm' => $this->confirm,
                     'typeUser' => $typeUser,
                     'posts' => $posts);
@@ -125,10 +127,11 @@ class UtilisateurController extends Controller {
                 }
             }
         }
-
+       
         $args = array('cats' => $cats,
             'searchForm' => $form->createView(),
             'connexionForm' => $formConnexion->createView(),
+            'submit' => $this->submit,
             'confirm' => $this->confirm);
 
 
@@ -166,8 +169,10 @@ class UtilisateurController extends Controller {
         $verif = $repository->checkLogin($nom, $mdp);
 
         if ($verif === null) {
+            $this->submit = true;
             return $this->confirm;
         } else {
+            $this->submit = true;
             $this->confirm = true;
             return $verif;
         }

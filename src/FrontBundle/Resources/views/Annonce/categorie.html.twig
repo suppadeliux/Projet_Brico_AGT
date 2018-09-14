@@ -7,9 +7,9 @@
 {% block header %}
     {{ parent() }} 
     <div class="container">    
-    {{ form_start(searchForm) }}
-    {{ form_widget(searchForm.motcle,{ 'attr': {'placeholder': 'Rechercher un article, une catégorie etc...'} }) }}
-    {{ form_end(searchForm) }}
+        {{ form_start(searchForm) }}
+        {{ form_widget(searchForm.motcle,{ 'attr': {'placeholder': 'Rechercher un article, une catégorie etc...'} }) }}
+        {{ form_end(searchForm) }}
     </div> 
 {% endblock %}
 
@@ -19,42 +19,42 @@
     <hr> 
     {% for post in posts %}
         <div class="post">
-
+            <div class="img">
+                <a href="{{ path('view', {'id' : post.id}) }}"> <img src="{{ asset('uploads/annonces/' ~ post.photo) }}" /></a>
+            </div>
             <div class="detail">
                 <h3><a href="{{ path('view', {'id' : post.id}) }}">{{ post.type|capitalize }} - {{ post.titre|upper }}</a></h3>             
                 <p>Marque : {{ post.marque|upper }}</p>
                 <p class="content">{{ post.resume|capitalize }}</p>
                 <p class="details">Le <span>{{ post.datePublication|date('d/m/Y') ~ ' à ' ~ post.ville|upper }}</span> </p>
-            </div>
-            <div class="img">
-                <a href="{{ path('view', {'id' : post.id}) }}"> <img src="{{ asset('uploads/annonces/' ~ post.photo) }}" /></a>
-            </div>
+                <h5>Catégorie > <a href="{{ path('categorie',{'id' : post.categorie.id}) }}">{{ post.categorie.libelle|upper }}</a></h5>
+            </div>        
             <hr/>
         </div>
     {% endfor %}
     {% if cat.annonces is empty %}
-            <p>Désolé, aucun article correspondant à cette catégorie...</p>
-            <a href="{{ path('index') }}">Retour vers l'accueil</a>
-        {% else %}
-            <div class="pagination">
-                <div class="pagination-buttons link_blog text-center">     
-                    {% if pagination.page>1 %}
-                        <a href="{{ path(pagination.route, pagination.route_params|merge({'page': 1, 'id' : cat.id})) }}"><<</a>
-                        <a href="{{ path(pagination.route, pagination.route_params|merge({'page': pagination.page-1, 'id' : cat.id})) }}"></a>
-                    {% endif %}
+        <p>Désolé, aucun article correspondant à cette catégorie...</p>
+        <a href="{{ path('index') }}">Retour vers l'accueil</a>
+    {% else %}
+        <div class="pagination">
+            <div class="pagination-buttons link_blog text-center">     
+                {% if pagination.page>1 %}
+                    <a href="{{ path(pagination.route, pagination.route_params|merge({'page': 1, 'id' : cat.id})) }}"><<</a>
+                    <a href="{{ path(pagination.route, pagination.route_params|merge({'page': pagination.page-1, 'id' : cat.id})) }}"></a>
+                {% endif %}
 
-                    {% if posts_count!=0 %}
-                        {% for p in range(max(pagination.page-2, 1), min(pagination.page+2, pagination.pages_count)) %}
-                            <a{% if p == pagination.page %} class="current-page"{% endif %} href="{{ path(pagination.route, pagination.route_params|merge({'id' : cat.id, 'page': p})) }}">{{ p }}</a>
-                        {% endfor %}
-                    {% endif %}
+                {% if posts_count!=0 %}
+                    {% for p in range(max(pagination.page-2, 1), min(pagination.page+2, pagination.pages_count)) %}
+                        <a{% if p == pagination.page %} class="current-page"{% endif %} href="{{ path(pagination.route, pagination.route_params|merge({'id' : cat.id, 'page': p})) }}">{{ p }}</a>
+                    {% endfor %}
+                {% endif %}
 
-                    {% if pagination.page<pagination.pages_count %}
-                        <a href="{{ path(pagination.route, pagination.route_params|merge({'page': pagination.page+1,'id' : cat.id})) }}">></a>
-                        <a href="{{ path(pagination.route, pagination.route_params|merge({'page': pagination.pages_count,'id' : cat.id})) }}">>></a>
-                    {% endif %}
-                </div>
-            </div> 
+                {% if pagination.page<pagination.pages_count %}
+                    <a href="{{ path(pagination.route, pagination.route_params|merge({'page': pagination.page+1,'id' : cat.id})) }}">></a>
+                    <a href="{{ path(pagination.route, pagination.route_params|merge({'page': pagination.pages_count,'id' : cat.id})) }}">>></a>
+                {% endif %}
+            </div>
+        </div> 
     {% endif %}
 
 {% endblock %}

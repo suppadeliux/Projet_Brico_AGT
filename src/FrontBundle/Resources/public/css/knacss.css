@@ -37,6 +37,8 @@
 .img{
     float:left;
     margin :10px;
+    width: 150px;
+    height: 150px;
 }
 
 .detail{
